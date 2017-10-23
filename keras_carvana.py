@@ -166,6 +166,7 @@ train_generator = train_datagen.flow_from_directory(projdir + "\\train", target_
 validation_generator = test_datagen.flow_from_directory(projdir + "\\validate", target_size=(160,240), color_mode='grayscale',
                                                         classes=['yaw01','yaw09'], class_mode='categorical',
                                                         batch_size=batch_size, shuffle=False)
+val_items = len(validation_generator.filenames)
 
 test_generator = test_datagen.flow_from_directory(projdir + "\\test", target_size=(160,240), color_mode='grayscale',
                                                         classes=['yaw01','yaw09'], class_mode='categorical',
@@ -194,7 +195,7 @@ for batch in validation_generator:
     
 #%% Evaluate 
 test_generator.reset()
-modf.evaluate_generator(test_generator, np.ceil(6000/batch_size))
+modf.evaluate_generator(test_generator, np.ceil(test_items/batch_size))
 Out[150]: 
 [0.0081246644626418937,
  0.0081246641458860448,
@@ -209,12 +210,12 @@ Out[151]:
  'categorical_accuracy']
 
 test_generator.reset()
-pred = modf.predict_generator(test_generator, np.ceil(6000/batch_size), verbose=1)
+pred = modf.predict_generator(test_generator, np.ceil(test_items/batch_size), verbose=1)
 find_mistakes(pred, test_generator)
 find_mistakes(pred, test_generator, show=True)
 
 validation_generator.reset()
-valpred = modf.predict_generator(validation_generator, np.ceil(1144/batch_size))
+valpred = modf.predict_generator(validation_generator, np.ceil(val_items/batch_size))
 find_mistakes(valpred, validation_generator)
 find_mistakes(valpred, validation_generator, show=True)
     

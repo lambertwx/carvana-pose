@@ -133,17 +133,23 @@ if False:
     train_rawdir = "c:/Users/lambert.wixson/datasets/kaggle_carvana/train"
     train_dir = "c:/Users/lambert.wixson/datasets/kaggle_carvana/train/small"
 
-    seq = io.imread_collection(base_data + "train/full/*.jpg", conserve_memory=True)
+    seq = io.imread_collection(base_data + "train/full/*.jpg", conserve_memory=True, check_files=False)
     write_reduced(seq, "c:/Users/lambert.wixson/datasets/kaggle_carvana/train/small-color")
-   
-    seq = io.imread_collection(base_data + "validate/full/*.jpg", conserve_memory=True)
+    write_reduced(seq, "c:/Users/lambert.wixson/datasets/kaggle_carvana/train/small-color", "05")
+    write_reduced(seq, "c:/Users/lambert.wixson/datasets/kaggle_carvana/train/small-color", "13")
+    
+    seq = io.imread_collection(base_data + "validate/full/*.jpg", conserve_memory=True, check_files=False)
     write_reduced(seq, base_data + "validate/small-color")
+    write_reduced(seq, base_data + "validate/small-color", "05")
+    write_reduced(seq, base_data + "validate/small-color", "13")
     
     seq = io.imread_collection(base_data + "extratrain/full/*.jpg", conserve_memory=True)
     write_reduced(seq, base_data + "extratrain/small-color")
     
-    seq = io.imread_collection(base_data + "test/full/*.jpg", conserve_memory=True)
+    seq = io.imread_collection(base_data + "test/full/*.jpg", conserve_memory=True, check_files=False)
     write_reduced(seq, base_data + "test/small-color")
+    write_reduced(seq, base_data + "test/small-color", "05")
+    write_reduced(seq, base_data + "test/small-color", "13")
 
 #%% Now check that all the folders are organized properly.
     foo = getBasenamesInDir(Path(base_data).joinpath('train/full'), 'jpg')
@@ -164,7 +170,7 @@ if False:
 #     Out[32]: True
 # =============================================================================
     
-    checkdirs(base_data, 'png', 'train/small-color', 'validate/small-color', 'test/small-color', ['01', '09'])
+    checkdirs(base_data, 'png', 'train/small-color', 'validate/small-color', 'test/small-color', ['01', '05', '09', '13'])
 # =============================================================================
 # 7886 files in c:\Users\lambert.wixson\datasets\kaggle_carvana\train\small-color
 # Unique names in train: 3943
@@ -179,5 +185,9 @@ if False:
 # =============================================================================
     checkdirs(base_data, 'png', 'project_front_vs_back/train-color/yaw01', 'project_front_vs_back/validate-color/yaw01', 
               'project_front_vs_back/test-color/yaw01', ['01'])
+    checkdirs(base_data, 'png', 'project_front_vs_back/train-color/yaw05', 'project_front_vs_back/validate-color/yaw05', 
+              'project_front_vs_back/test-color/yaw05', ['05'])
     checkdirs(base_data, 'png', 'project_front_vs_back/train-color/yaw09', 'project_front_vs_back/validate-color/yaw09', 
               'project_front_vs_back/test-color/yaw09', ['09'])
+    checkdirs(base_data, 'png', 'project_front_vs_back/train-color/yaw13', 'project_front_vs_back/validate-color/yaw13', 
+              'project_front_vs_back/test-color/yaw13', ['13'])
