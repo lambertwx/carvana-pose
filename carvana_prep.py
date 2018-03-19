@@ -137,17 +137,29 @@ if False:
     write_reduced(seq, "c:/Users/lambert.wixson/datasets/kaggle_carvana/train/small-color")
     write_reduced(seq, "c:/Users/lambert.wixson/datasets/kaggle_carvana/train/small-color", "05")
     write_reduced(seq, "c:/Users/lambert.wixson/datasets/kaggle_carvana/train/small-color", "13")
+write_reduced(seq, base_data + "train/small-color", "03")
+write_reduced(seq, base_data + "train/small-color", "07")
+write_reduced(seq, base_data + "train/small-color", "11")
+write_reduced(seq, base_data + "train/small-color", "15")
     
     seq = io.imread_collection(base_data + "validate/full/*.jpg", conserve_memory=True, check_files=False)
     write_reduced(seq, base_data + "validate/small-color")
     write_reduced(seq, base_data + "validate/small-color", "05")
     write_reduced(seq, base_data + "validate/small-color", "13")
+write_reduced(seq, base_data + "validate/small-color", "03")
+write_reduced(seq, base_data + "validate/small-color", "07")
+write_reduced(seq, base_data + "validate/small-color", "11")
+write_reduced(seq, base_data + "validate/small-color", "15")
     
     seq = io.imread_collection(base_data + "extratrain/full/*.jpg", conserve_memory=True)
     write_reduced(seq, base_data + "extratrain/small-color")
     
     seq = io.imread_collection(base_data + "test/full/*.jpg", conserve_memory=True, check_files=False)
     write_reduced(seq, base_data + "test/small-color")
+    write_reduced(seq, base_data + "test/small-color", "03")
+    write_reduced(seq, base_data + "test/small-color", "07")
+    write_reduced(seq, base_data + "test/small-color", "11")
+    write_reduced(seq, base_data + "test/small-color", "15")
     write_reduced(seq, base_data + "test/small-color", "05")
     write_reduced(seq, base_data + "test/small-color", "13")
 
@@ -183,11 +195,19 @@ if False:
 # Checked 2630 files, missing 0
 # Checked 2628 files, missing 0
 # =============================================================================
+    checkdirs(base_data, 'png', 'train/small-color', 'validate/small-color', 'test/small-color', ['01', '03', '05', '07', '09', '11','13', '15'])
+    
     checkdirs(base_data, 'png', 'project_front_vs_back/train-color/yaw01', 'project_front_vs_back/validate-color/yaw01', 
               'project_front_vs_back/test-color/yaw01', ['01'])
+    checkdirs(base_data, 'png', 'project_front_vs_back/train-color/yaw03', 'project_front_vs_back/validate-color/yaw03', 
+              'project_front_vs_back/test-color/yaw03', ['03'])
     checkdirs(base_data, 'png', 'project_front_vs_back/train-color/yaw05', 'project_front_vs_back/validate-color/yaw05', 
               'project_front_vs_back/test-color/yaw05', ['05'])
+    checkdirs(base_data, 'png', 'project_front_vs_back/train-color/yaw07', 'project_front_vs_back/validate-color/yaw07', 
+              'project_front_vs_back/test-color/yaw07', ['07'])
     checkdirs(base_data, 'png', 'project_front_vs_back/train-color/yaw09', 'project_front_vs_back/validate-color/yaw09', 
               'project_front_vs_back/test-color/yaw09', ['09'])
     checkdirs(base_data, 'png', 'project_front_vs_back/train-color/yaw13', 'project_front_vs_back/validate-color/yaw13', 
               'project_front_vs_back/test-color/yaw13', ['13'])
+    checkdirs(base_data, 'png', 'project_front_vs_back/train-color/yaw15', 'project_front_vs_back/validate-color/yaw15', 
+              'project_front_vs_back/test-color/yaw15', ['15'])
